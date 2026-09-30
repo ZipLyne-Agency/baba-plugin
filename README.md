@@ -28,9 +28,9 @@ All tools only read. Translations count against your baba plan (free: 2,500 char
 
 Or connect only the server: `claude mcp add --transport http baba https://mcp.itsbaba.com/mcp`.
 
-**Claude (claude.ai, desktop, mobile):** Settings, Connectors, then add baba from the directory, or choose Add custom connector and paste `https://mcp.itsbaba.com/mcp`.
+**Claude (claude.ai, desktop, mobile):** open [baba Hebrew in the Claude directory](https://claude.ai/directory/connectors/baba-hebrew) and choose Connect, or search for baba Hebrew under Customize, Connectors.
 
-**ChatGPT:** open the Apps directory, search for baba, and connect.
+**ChatGPT:** coming soon.
 
 Each one opens a baba sign-in page (email code, Google or Apple) and asks you to allow the connection.
 
