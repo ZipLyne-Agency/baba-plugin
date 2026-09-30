@@ -1,11 +1,23 @@
 {
   "name": "baba",
-  "displayName": "baba",
+  "displayName": "baba Hebrew",
   "version": "1.0.0",
   "description": "Hebrew translation with pronunciation, nikud, transliteration and Israel news, from your baba account.",
-  "author": { "name": "baba (ZipLyne LLC)", "email": "support@itsbaba.com", "url": "https://www.itsbaba.com" },
+  "author": {
+    "name": "baba (ZipLyne LLC)",
+    "email": "support@itsbaba.com",
+    "url": "https://www.itsbaba.com"
+  },
   "homepage": "https://www.itsbaba.com/ai-plugin",
   "repository": "https://github.com/ZipLyne-Agency/baba-plugin",
   "license": "MIT",
-  "keywords": ["hebrew", "translation", "nikud", "transliteration", "israel", "news"]
+  "keywords": [
+    "hebrew",
+    "translation",
+    "nikud",
+    "transliteration",
+    "israel",
+    "news"
+  ],
+  "privacyPolicyUrl": "https://www.itsbaba.com/privacy#ai-plugin"
 }
