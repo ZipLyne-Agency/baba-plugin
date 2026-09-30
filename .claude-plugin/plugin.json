@@ -19,5 +19,7 @@
     "israel",
     "news"
   ],
-  "privacyPolicyUrl": "https://www.itsbaba.com/privacy#ai-plugin"
+  "privacyPolicyUrl": "https://www.itsbaba.com/privacy#ai-plugin",
+  "documentationUrl": "https://www.itsbaba.com/ai-plugin",
+  "supportUrl": "https://www.itsbaba.com/support"
 }
