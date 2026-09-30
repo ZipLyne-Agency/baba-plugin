@@ -1,30 +1,52 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "baba",
-  "version": "1.0.0",
-  "description": "Hebrew translation with pronunciation, nikud, transliteration and Israel news, from your baba account.",
-  "author": { "name": "baba (ZipLyne LLC)", "email": "support@itsbaba.com", "url": "https://www.itsbaba.com" },
+  "version": "1.1.0",
+  "description": "Hebrew the way Israelis say it: translation with pronunciation, word-by-word breakdowns, Israeli slang, a phrasebook, nikud and Israel news, from your baba account.",
+  "author": {
+    "name": "baba (ZipLyne LLC)",
+    "email": "support@itsbaba.com",
+    "url": "https://www.itsbaba.com"
+  },
   "homepage": "https://www.itsbaba.com/ai-plugin",
   "repository": "https://github.com/ZipLyne-Agency/baba-plugin",
   "license": "MIT",
-  "keywords": ["hebrew", "translation", "nikud", "transliteration", "israel", "news"],
+  "keywords": [
+    "hebrew",
+    "translation",
+    "israeli slang",
+    "learn hebrew",
+    "phrasebook",
+    "nikud",
+    "transliteration",
+    "israel",
+    "news"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "baba",
-        "shortDescription": "Hebrew translation and news",
-        "longDescription": "baba is the Hebrew translator app, now in ChatGPT. Ask for a translation into or out of Hebrew and get it with the pronunciation. Ask what Israeli slang means. Get the nikud (vowel points) on any Hebrew text so you know how to read it, or spell a name in Hebrew letters. Catch up on Israel news: the top stories across Israeli newsrooms, a search of the last 30 days, and baba News's Today in Brief.\n\nFor people learning Hebrew, moving to Israel, traveling, or following Israeli news.\n\nSign in with your baba account (a free account is created if you don't have one). Translations use your baba plan: the free plan includes 2,500 characters a month and baba Pro 250,000. Nikud and transliteration allow 200 uses a day, and news 100 lookups a day. Every tool only reads: nothing in your account changes, and translations made here are not saved to your baba history. One side of every translation must be Hebrew.",
+        "shortDescription": "Translate and learn Hebrew",
+        "longDescription": "baba is the Hebrew translator app, now inside ChatGPT. Ask for a translation into or out of Hebrew and get it with how to say it, in the right form for a man or a woman. Tap Listen to hear it read aloud, turn on nikud (vowel points) to see how it is read, or break any Hebrew sentence down word by word with each word's root, meaning and grammar.\n\nAsk what Israeli slang means and get baba's dictionary entry: pronunciation, how Israelis really use it, where it came from and example sentences. Open the phrasebook for hand-checked phrases for cafés, taxis, the shuk, meeting people, emergencies and texting.\n\nbaba also has a home in your ChatGPT sidebar with a translator, the slang of the day and the whole phrasebook, and a Hebrew helper you can open beside any conversation. Catch up on Israel news too: the top stories across Israeli newsrooms, a search of the last 30 days, and baba News's Today in Brief.\n\nFor people learning Hebrew, moving to Israel, traveling, or talking with Israeli friends and family. Sign in with your baba account, or create one with Google or Apple. Every tool only reads, except saving your preferences; translations made here are not written to your baba history.",
         "developerName": "baba (ZipLyne LLC)",
-        "category": "Education",
-        "capabilities": ["Translate Hebrew", "Explain Israeli slang", "Add nikud", "Transliterate", "Israel news"],
+        "category": "Education & Research",
+        "capabilities": [
+          "Translate Hebrew",
+          "Explain Israeli slang",
+          "Break down Hebrew",
+          "Hebrew phrasebook",
+          "Add nikud",
+          "Transliterate",
+          "Israel news"
+        ],
         "websiteURL": "https://www.itsbaba.com/ai-plugin",
         "supportURL": "https://www.itsbaba.com/support",
         "privacyPolicyURL": "https://www.itsbaba.com/privacy",
         "termsOfServiceURL": "https://www.itsbaba.com/terms",
         "defaultPrompt": [
-          "How do I say \"where is the train station?\" in Hebrew?",
-          "Add nikud to: אני לומד עברית",
-          "What's happening in Israel today?"
+          "How do I say \"Can you speak more slowly?\" to a woman in Hebrew?",
+          "What does sababa mean?",
+          "Break down: אני אוהב אותך מאוד"
         ],
         "brandColor": "#A85A38",
         "brandColorDark": "#E8A76F",
@@ -36,34 +58,34 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Translate a travel phrase from English into Hebrew with pronunciation.",
-              "prompt": "How do I say \"Where is the train station?\" in Hebrew?",
+              "description": "Translate with the right gender for the listener.",
+              "prompt": "How do I ask a woman \"Can you speak more slowly?\" in Hebrew?",
               "tools_triggered": "translate",
-              "expected_behavior": "Calls translate with source_lang en and target_lang he, then shows the Hebrew (for example איפה תחנת הרכבת?) and its pronunciation in Latin letters."
+              "expected_behavior": "Calls translate with target_lang he and talking_to woman, and returns the feminine form (את יכולה לדבר יותר לאט?) with its pronunciation."
             },
             {
-              "description": "Explain Israeli slang in plain English.",
-              "prompt": "What does the Israeli slang \"סבבה אחי, יאללה\" mean?",
-              "tools_triggered": "translate",
-              "expected_behavior": "Calls translate with mode slang, source_lang he and target_lang en, and explains the phrase (roughly: cool, bro, let's go) with its pronunciation."
+              "description": "Explain Israeli slang from baba's dictionary.",
+              "prompt": "What does the Israeli slang word sababa mean?",
+              "tools_triggered": "explain_israeli_slang",
+              "expected_behavior": "Calls explain_israeli_slang with term sababa. The card shows סבבה, its pronunciation (sah-BAH-bah), meaning, usage notes, origin and example sentences, with a link to the full entry on app.itsbaba.com."
             },
             {
-              "description": "Add vowel points to Hebrew text.",
-              "prompt": "Add nikud to this so I can read it: בוקר טוב, מה שלומך?",
-              "tools_triggered": "add_nikud",
-              "expected_behavior": "Calls add_nikud and returns the same sentence with nikud (for example בֹּקֶר טוֹב), copied exactly from the tool."
+              "description": "Break a Hebrew sentence down word by word.",
+              "prompt": "Break down this Hebrew word by word: אני אוהב אותך מאוד",
+              "tools_triggered": "break_down_hebrew",
+              "expected_behavior": "Calls break_down_hebrew. The card lists each word right to left with nikud, transliteration, meaning, root (for example א.ה.ב for אוהב) and part of speech, plus a translation of the whole sentence."
+            },
+            {
+              "description": "Show ready phrases for a situation.",
+              "prompt": "Give me Hebrew phrases I can use at a café in Tel Aviv.",
+              "tools_triggered": "show_hebrew_phrases",
+              "expected_behavior": "Calls show_hebrew_phrases with situation cafe and shows six phrases with Hebrew, transliteration and English, such as אפשר חשבון? (Efshar kheshbon?)."
             },
             {
               "description": "Catch up on current news in Israel.",
               "prompt": "What are the top news stories in Israel right now?",
               "tools_triggered": "israel_top_stories",
               "expected_behavior": "Calls israel_top_stories and lists current stories with a one-line summary, how many newsrooms covered each, and links to news.itsbaba.com."
-            },
-            {
-              "description": "Search Israeli news for a topic.",
-              "prompt": "Find Israeli news from the last few days about the Knesset.",
-              "tools_triggered": "search_israel_news",
-              "expected_behavior": "Calls search_israel_news with a query such as Knesset and a recent days value, and lists matching stories with summaries and links."
             }
           ],
           "negative": [
@@ -85,7 +107,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial release: Hebrew translation with pronunciation and slang mode, nikud, transliteration, and Israel news (top stories, search, daily brief)."
+        "release_notes": "Initial submission of baba to the ChatGPT plugin directory. baba translates into and out of Hebrew with pronunciation and the right gender form, explains Israeli slang from baba's dictionary, breaks Hebrew down word by word, shows hand-checked phrases for everyday situations, adds nikud, transliterates, and reads Israel news. It renders inline cards, a sidebar home (global entrypoint), a Hebrew helper in a thread (thread entrypoint), native settings and composer @-mentions. Sign-in is OAuth with a baba account; the reviewer account in the demo credentials has baba Pro so every tool, including Listen, works. One side of every translation must be Hebrew. Tools only read, except update_settings (saves preferences) and pronounce_hebrew (keeps a clip for an hour)."
       }
     }
   }
