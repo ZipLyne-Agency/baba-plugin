@@ -51,7 +51,12 @@
         "brandColor": "#A85A38",
         "brandColorDark": "#E8A76F",
         "composerIcon": "./assets/icon.png",
-        "logo": "./assets/logo.png"
+        "logo": "./assets/logo.png",
+        "screenshots": [
+          "./assets/screenshots/screenshot-1.png",
+          "./assets/screenshots/screenshot-2.png",
+          "./assets/screenshots/screenshot-3.png"
+        ]
       },
       "onboardingSkill": "./skills/baba-hebrew/SKILL.md",
       "review": {
@@ -104,7 +109,8 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "This plugin does not sell products or process payments."
+        "commerce_description": "This plugin does not sell products or process payments.",
+        "demo_recording_url": "https://pub-2b1e2c21e28a489483559a66f54b796b.r2.dev/review/baba-chatgpt-review-demo-2026-10-01.mp4"
       },
       "publication": {
         "release_notes": "Initial submission of baba to the ChatGPT plugin directory. baba translates into and out of Hebrew with pronunciation and the right gender form, explains Israeli slang from baba's dictionary, breaks Hebrew down word by word, shows hand-checked phrases for everyday situations, adds nikud, transliterates, and reads Israel news. It renders inline cards, a sidebar home (global entrypoint), a Hebrew helper in a thread (thread entrypoint), native settings and composer @-mentions. Sign-in is OAuth with a baba account; the reviewer account in the demo credentials has baba Pro so every tool, including Listen, works. One side of every translation must be Hebrew. Tools only read, except update_settings (saves preferences) and pronounce_hebrew (keeps a clip for an hour)."
