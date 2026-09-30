@@ -1,0 +1,92 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "baba",
+  "version": "1.0.0",
+  "description": "Hebrew translation with pronunciation, nikud, transliteration and Israel news, from your baba account.",
+  "author": { "name": "baba (ZipLyne LLC)", "email": "support@itsbaba.com", "url": "https://www.itsbaba.com" },
+  "homepage": "https://www.itsbaba.com/ai-plugin",
+  "repository": "https://github.com/ZipLyne-Agency/baba-plugin",
+  "license": "MIT",
+  "keywords": ["hebrew", "translation", "nikud", "transliteration", "israel", "news"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "baba",
+        "shortDescription": "Hebrew translation and news",
+        "longDescription": "baba is the Hebrew translator app, now in ChatGPT. Ask for a translation into or out of Hebrew and get it with the pronunciation. Ask what Israeli slang means. Get the nikud (vowel points) on any Hebrew text so you know how to read it, or spell a name in Hebrew letters. Catch up on Israel news: the top stories across Israeli newsrooms, a search of the last 30 days, and baba News's Today in Brief.\n\nFor people learning Hebrew, moving to Israel, traveling, or following Israeli news.\n\nSign in with your baba account (a free account is created if you don't have one). Translations use your baba plan: the free plan includes 2,500 characters a month and baba Pro 250,000. Nikud and transliteration allow 200 uses a day, and news 100 lookups a day. Every tool only reads: nothing in your account changes, and translations made here are not saved to your baba history. One side of every translation must be Hebrew.",
+        "developerName": "baba (ZipLyne LLC)",
+        "category": "Education",
+        "capabilities": ["Translate Hebrew", "Explain Israeli slang", "Add nikud", "Transliterate", "Israel news"],
+        "websiteURL": "https://www.itsbaba.com/ai-plugin",
+        "supportURL": "https://www.itsbaba.com/support",
+        "privacyPolicyURL": "https://www.itsbaba.com/privacy",
+        "termsOfServiceURL": "https://www.itsbaba.com/terms",
+        "defaultPrompt": [
+          "How do I say \"where is the train station?\" in Hebrew?",
+          "Add nikud to: אני לומד עברית",
+          "What's happening in Israel today?"
+        ],
+        "brandColor": "#A85A38",
+        "brandColorDark": "#E8A76F",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/baba-hebrew/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Translate a travel phrase from English into Hebrew with pronunciation.",
+              "prompt": "How do I say \"Where is the train station?\" in Hebrew?",
+              "tools_triggered": "translate",
+              "expected_behavior": "Calls translate with source_lang en and target_lang he, then shows the Hebrew (for example איפה תחנת הרכבת?) and its pronunciation in Latin letters."
+            },
+            {
+              "description": "Explain Israeli slang in plain English.",
+              "prompt": "What does the Israeli slang \"סבבה אחי, יאללה\" mean?",
+              "tools_triggered": "translate",
+              "expected_behavior": "Calls translate with mode slang, source_lang he and target_lang en, and explains the phrase (roughly: cool, bro, let's go) with its pronunciation."
+            },
+            {
+              "description": "Add vowel points to Hebrew text.",
+              "prompt": "Add nikud to this so I can read it: בוקר טוב, מה שלומך?",
+              "tools_triggered": "add_nikud",
+              "expected_behavior": "Calls add_nikud and returns the same sentence with nikud (for example בֹּקֶר טוֹב), copied exactly from the tool."
+            },
+            {
+              "description": "Catch up on current news in Israel.",
+              "prompt": "What are the top news stories in Israel right now?",
+              "tools_triggered": "israel_top_stories",
+              "expected_behavior": "Calls israel_top_stories and lists current stories with a one-line summary, how many newsrooms covered each, and links to news.itsbaba.com."
+            },
+            {
+              "description": "Search Israeli news for a topic.",
+              "prompt": "Find Israeli news from the last few days about the Knesset.",
+              "tools_triggered": "search_israel_news",
+              "expected_behavior": "Calls search_israel_news with a query such as Knesset and a recent days value, and lists matching stories with summaries and links."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A translation with no Hebrew side should not use baba.",
+              "prompt": "Translate \"good morning\" into French."
+            },
+            {
+              "description": "An unrelated request should not use baba.",
+              "prompt": "What's the weather in Paris this weekend?"
+            },
+            {
+              "description": "Creative writing in English should not use baba.",
+              "prompt": "Write me a short poem about autumn."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial release: Hebrew translation with pronunciation and slang mode, nikud, transliteration, and Israel news (top stories, search, daily brief)."
+      }
+    }
+  }
+}

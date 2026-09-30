@@ -1,0 +1,12 @@
+{
+  "name": "baba",
+  "description": "baba plugins: Hebrew translation, nikud, transliteration and Israel news.",
+  "owner": { "name": "baba (ZipLyne LLC)", "email": "support@itsbaba.com" },
+  "plugins": [
+    {
+      "name": "baba",
+      "source": "./",
+      "description": "Hebrew translation with pronunciation, nikud, transliteration and Israel news, from your baba account."
+    }
+  ]
+}
